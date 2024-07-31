@@ -3,7 +3,7 @@
 This is a proof of concept for a form submission system for the NHS Genetics Test. It is designed to standardise the way referrers submit forms for genetic testing. It solves the problem of inconsistent and incomplete forms being submitted to the NHS Genetics Test.
 
 See below for a demo:
-
+C:\Users\Will\Repos\nhs_directory\2024-07-31 22-17-44.mp4
 
 There are two key components to this system:
 - Text Mining in python: Extracting information from the test directory (pdf) using GPT-4o (one off)
