@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genomic Referral Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            padding-left: 0;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-section label,
+        .form-section input,
+        .form-section select,
+        .form-section textarea {
+            padding-left: 10px;
+            width: calc(100% - 20px);
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <form id="testForm">
+        <h1>Rare Disease Genetic Referral Form</h1>
+        <p>Please refer to the National Genomics test directory for information on genetic tests available. This can be found <a href="https://www.england.nhs.uk/wp-content/uploads/2024/07/national-genomic-test-directory-rare-and-inherited-disease-eligibility-criteria-v7.pdf">here</a>.</p>
+    
+        <div class="form-section">
+            <h2>Patient Details</h2>
+
+            <label for="nhsNo">NHS No</label>
+            <input type="text" id="nhsNo" placeholder="Enter the NHS number" required>
+
+            <label for="dob">D.O.B</label>
+            <input type="date" id="dob" required>
+
+            <label for="forename">Forename</label>
+            <input type="text" id="forename" placeholder="Enter the forename" required>
+
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" placeholder="Enter the surname" required>
+
+            <label for="sex">Sex</label>
+            <select id="sex" required>
+                <option value="">Select sex</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="ethnicity">Ethnicity</label>
+            <input type="text" id="ethnicity" placeholder="Enter the ethnicity" required>
+
+            <label for="clinicalGeneticsNo">Clinical Genetics No</label>
+            <input type="text" id="clinicalGeneticsNo" placeholder="Enter the clinical genetics number" required>
+        </div>
+
+        <div class="form-section">
+            <h2>Test Selection</h2>
+
+            <label for="testCode">Test Code</label>
+            <select id="testCode" required>
+                <option value="">Select a test code</option>
+            </select>
+
+            <label for="testCriteria">Select Criteria Patient Meets</label>
+            <select id="testCriteria" required>
+                <option value="">Select test criteria</option>
+            </select>
+
+
+
+            <label for="clinicalFeatures">Additional Clinical Details</label>
+            <textarea id="clinicalFeatures" rows="5" placeholder="Describe any additional clinical information..."></textarea>
+        </div>
+
+        <div class="form-section">
+            <h2>Referrer Details</h2>
+
+            <label for="referrerName">Referrer Name</label>
+            <input type="text" id="referrerName" placeholder="Enter the referrer's name" required>
+
+            <label for="referrerContact">Referrer Contact Information</label>
+            <input type="text" id="referrerContact" placeholder="Enter the referrer's contact information" required>
+
+            <label for="requestingSpecialty">Requesting Specialty</label>
+            <select id="requestingSpecialty" required>
+                <option value="">Select a specialty</option>
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+<script>
+
+        // Embed the JSON data directly into the HTML
+        const data = [{"criteria": ["Clinical features strongly suggestive of achondroplasia"], "requesting_specialties": ["Clinical Genetics", "Neonatology", "Paediatrics"], "test_code": "R24", "clinical_indication_name": "R24 - Achondroplasia"}, {"criteria": ["Clinical features of acute intermittent porphyria (AIP) AND ALA, PBG, or total porphyrin testing suggests diagnosis of AIP"], "requesting_specialties": ["Clinical Genetics", "Dermatology", "Gastroenterology", "Hepatology", "Neurology", "Paediatrics"], "test_code": "R169", "clinical_indication_name": "R169 - Acute intermittent porphyria"}, {"criteria": ["Any patient ---- Presenting with an acute rise in skeletal muscle CK>20,000 iu/l unless this occurs following a single episode of unaccustomed exercise not requiring hospital admission (e.g., following weight lifting, a personal trainer session, spin class, marathon etc.) ---- A second similar episode should trigger testing", "Any patient ---- Testing should be targeted at those where a genetic or genomic diagnosis will guide management for the proband or family"], "requesting_specialties": ["Neurology", "Intensive Care", "Clinical Genetics", "Metabolic Medicine", "Nephrology"], "test_code": "R419", "clinical_indication_name": "R419 - Acute Rhabdomyolysis "}, {"criteria": ["Acutely unwell children with a likely monogenic disorder ---- clinical features AND/OR non-genetic investigations are pathognomonic of a single gene disorder, no test is available AND molecular testing is required urgently to guide management"], "requesting_specialties": ["Clinical Genetics"], "test_code": "R14", "clinical_indication_name": "R14 - Acutely unwell children with a likely monogenic disorder"}, {"criteria": ["Unexplained dystonia, chorea or related movement disorder with onset in adulthood with a likely monogenic cause"], "requesting_specialties": ["Clinical Genetics", "Neurology"], "test_code": "R56", "clinical_indication_name": "R56 - Adult onset dystonia, chorea or related movement disorder"}, {"criteria": ["Unexplained spastic paraplegia of likely monogenic aetiology with onset in adulthood", "When spinocerebellar ataxia is considered plausible clinically ---- STR testing of spinocerebellar ataxia loci will be included as a component test", "Referrals will be triaged by the Genomic Laboratory ---- testing should be targeted at those where a genetic or genomic diagnosis will guide management for the proband or family", "At presentation ---- following assessment by a Neurologist or Clinical Geneticist"], "requesting_specialties": ["Clinical Genetics", "Neurology"], "test_code": "R60", "clinical_indication_name": "R60 - Adult onset hereditary spastic paraplegia"}, {"criteria": ["Unexplained leukodystrophy on neuroimaging with onset in adulthood ---- Genetic or genomic diagnosis will guide management for the proband or family"], "requesting_specialties": ["Clinical Genetics", "Neurology"], "test_code": "R62", "clinical_indication_name": "R62 - Adult onset leukodystrophy"}, {"criteria": ["Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Unexplained dementia ---- Age at onset <55 years where acquired causes (e.g. stroke, tumour) have been excluded", "Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Unexplained dementia ---- Family history of dementia of the same type and/or family history of MND in a first / second degree relative", "Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Parkinson\u2019s disease or complex Parkinsonism ---- Age at onset <50 years", "Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Parkinson\u2019s disease or complex Parkinsonism ---- First degree relative affected at <50 years", "Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Parkinson\u2019s disease or complex Parkinsonism ---- Complex features such as spasticity, gaze palsy, early dementia, early bulbar failure, dyspraxia, ataxia, postural hypotension, cortical sensory loss, brain iron accumulation on MRI brain", "Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Amyotrophic lateral sclerosis (ALS) with or without frontotemporal dementia ---- Evidence of lower motor neuron (LMN) degeneration by clinical, electrophysiologic or neuropathologic examination AND Evidence of upper motor neuron (UMN) degeneration by clinical examination AND Progressive course AND No evidence of other aetiology", "Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Cerebral amyloid angiopathy (CAA) ---- Age of onset < 50 years", "Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Cerebral amyloid angiopathy (CAA) ---- Family history of haemorrhagic stroke (intracerebral haemorrhage or convexity subarachnoid haemorrhage) or dementia AND Clinical presentation in keeping with CAA i.e. transient focal neurological episodes (\u201camyloid spells\u201d), intracerebral haemorrhage, convexity subarachnoid haemorrhage, cognitive impairment, dementia AND Radiological features consistent with CAA i.e. two or more strictly lobar haemorrhagic lesions on blood sensitive MRI, which can include intracerebral haemorrhage, cerebral microbleeds, cortical superficial siderosis or convexity subarachnoid haemorrhage", "Young onset or familial neurodegeneration starting in adulthood with a likely monogenic cause ---- Cerebral amyloid angiopathy (CAA) ---- Family history of haemorrhagic stroke (intracerebral haemorrhage or convexity subarachnoid haemorrhage) or dementia AND Other investigations supportive of amyloid-beta deposition within the central nervous system e.g. amyloid-PET imaging, CSF amyloid-beta measures, brain biopsy"], "requesting_specialties": ["Clinical Genetics", "Neurology", "Psychiatry"], "test_code": "R58", "clinical_indication_name": "R58 - Adult onset neurodegenerative disorder"}, {"criteria": ["Clinical features in males suggestive of X-linked agammaglobulinaemia with low or absent BTK expression", "Males with absent B cells"], "requesting_specialties": ["Clinical Genetics", "Immunology"], "test_code": "R233", "clinical_indication_name": "R233 - Agammaglobulinaemia with absent BTK expression"}, {"criteria": ["Albinism or generalised cutaneous hypopigmentation with or without ocular involvement", "Unexplained congenital nystagmus without a causative lesion on MRI brain"], "requesting_specialties": ["Clinical Genetics", "Dermatology", "Ophthalmology"], "test_code": "R39", "clinical_indication_name": "R39 - Albinism or congenital nystagmus"}, {"criteria": ["Individuals with a clear clinical diagnosis of Albright hereditary osteodystrophy, pseudohypoparathyroidism or pseudopseudohypoparathyroidism, acrodysostosis and osteoma cutis ---- based on clinical assessment", "Individuals with a clear clinical diagnosis of Albright hereditary osteodystrophy, pseudohypoparathyroidism or pseudopseudohypoparathyroidism, acrodysostosis and osteoma cutis ---- based on radiological assessment", "Individuals with a clear clinical diagnosis of Albright hereditary osteodystrophy, pseudohypoparathyroidism or pseudopseudohypoparathyroidism, acrodysostosis and osteoma cutis ---- based on biochemical assessment"], "requesting_specialties": ["Clinical Genetics", "Endocrinology"], "test_code": "R293", "clinical_indication_name": "R293 - Albright hereditary osteodystrophy, pseudohypoparathyroidism, pseudopseudohypoparathyroidism, acrodysostosis and osteoma cutis"}, {"criteria": ["Plasma concentration of alpha-1-antitrypsin below normal range ---- Prolonged neonatal jaundice with an inconclusive alpha-1-antitrypsin phenotyping result", "Plasma concentration of alpha-1-antitrypsin below normal range ---- Variant analysis will inform reproductive choice", "Plasma concentration of alpha-1-antitrypsin below normal range ---- Adult with cirrhosis or emphysema where a genetic diagnosis would influence management following an inconclusive alpha-1-antitrypsin phenotyping result"], "requesting_specialties": ["Clinical Genetics", "Gastroenterology", "Hepatology", "Respiratory Medicine", "General practice"], "test_code": "R191", "clinical_indication_name": "R191 - Alpha-1-antitrypsin deficiency"}, {"criteria": ["Clinical features strongly indicative of a diagnosis of Alstrom syndrome including at least two of the following ---- Hepatobiliary disease", "Clinical features strongly indicative of a diagnosis of Alstrom syndrome including at least two of the following ---- Retinal degeneration", "Clinical features strongly indicative of a diagnosis of Alstrom syndrome including at least two of the following ---- Childhood onset obesity", "Clinical features strongly indicative of a diagnosis of Alstrom syndrome including at least two of the following ---- Renal disease"], "requesting_specialties": ["Cardiology", "Clinical Genetics", "Endocrinology", "Ophthalmology"], "test_code": "R106", "clinical_indication_name": "R106 - Alstrom syndrome"}, {"criteria": ["Respiratory distress and severe pulmonary hypertension presenting within the first two days of life ---- without any sustained response to supportive measures AND Additional malformations affecting cardiac, gastrointestinal and genitourinary systems"], "requesting_specialties": ["Clinical Genetics", "Neonatology", "Respiratory Medicine"], "test_code": "R330", "clinical_indication_name": "R330 - Alveolar capillary dysplasia with misalignment of pulmonary veins"}, {"criteria": ["Neonatal presentation with ambiguous genitalia ---- genetic sex requires rapid establishment for management purposes"], "requesting_specialties": ["Clinical Genetics", "Endocrinology", "Neonatology"], "test_code": "R314", "clinical_indication_name": "R314 - Ambiguous genitalia presenting neonatally"}, {"criteria": ["Significant developmental abnormalities of enamel quality and/or quantity affecting all or nearly all teeth of both dentitions (primary and secondary) ---- Environmental factors excluded"], "requesting_specialties": ["Clinical Genetics", "Surgical Dentistry"], "test_code": "R340", "clinical_indication_name": "R340 - Amelogenesis imperfecta"}, {"criteria": ["Significant exposure to aminoglycosides posing risk of ototoxicity ---- individuals with a predisposition to gram negative infections for example due to known respiratory disease (e.g. bronchiectasis, cystic fibrosis) or due to structural or voiding genitourinary tract disorders", "Significant exposure to aminoglycosides posing risk of ototoxicity ---- individuals with hearing loss who have been exposed to aminoglycosides"], "requesting_specialties": ["Appropriate specialist referring clinician"], "test_code": "R65", "clinical_indication_name": "R65 - Aminoglycoside exposure posing risk to hearing"}, {"criteria": ["Molecular findings suggestive of Angelman syndrome from, for example microarray, exome or genome analysis such as likely isodisomy or deletion at 15q1 1-13", "Clinical features strongly suggestive of Angelman syndrome"], "requesting_specialties": ["Clinical Genetics", "Genomics laboratory", "Neurology", "Community paediatrics"], "test_code": "R47", "clinical_indication_name": "R47 - Angelman syndrome"}, {"criteria": ["APC -associated findings ---- Multifocal or bilateral CHRPE as assessed by experienced Ophthalmologist", "APC -associated findings ---- Aggressive fibromatosis /Desmoid tumour (CTNNB1 WT where testing performed)", "APC -associated findings ---- Cribriform -morular variant of papillary thyroid cancer", "APC -associated findings ---- Hepatoblastoma", "APC -associated findings ---- Multiple osteomas of skull and mandible or multiple dental abnormalities (unerupted teeth, supernumerary teeth with dentigerous cysts or odontomas) in children/young adults", "APC -associated findings ---- Gastric polyposis", "APC -associated findings ---- Medulloblastoma with polyposis"], "requesting_specialties": ["Clinical Genetics", "Surgery", "Oncology"], "test_code": "R414", "clinical_indication_name": "R414 - APC associated Polyposis "}, {"criteria": ["Clinical features strongly suggestive of Apert syndrome ---- craniosynostosis AND syndactyly of the hands and feet ---- with or without additional features"], "requesting_specialties": ["Clinical Genetics"], "test_code": "R23", "clinical_indication_name": "R23 - Apert syndrome"}, {"criteria": ["Living affected individual (proband) ---- Breast cancer (age < 40 years)", "Living affected individual (proband) ---- Bilateral breast cancer (age < 60 years)", "Living affected individual (proband) ---- Triple negative breast cancer (age < 60 years)", "Living affected individual (proband) ---- Assigned male at birth and affected with breast cancer (any age)", "Living affected individual (proband) ---- Breast cancer (age < 45 years) and a first degree relative with breast cancer (age < 45 years)", "Living affected individual (proband) ---- Combined pathology-adjusted Manchester score \u2265 15 or single gene pathology adjusted score of \u2265 10 or BOADICEA/CanRisk score \u2265 10%", "Living affected individual (proband) ---- Ashkenazi Jewish ancestry and breast cancer at any age", "Living affected individual (proband) ---- \u2265 1 grandparent from Westray (Orkney) or Whalsay (Shetland) and breast cancer at any age", "Living affected individual ---- Pancreatic cancer AND family history of breast/high grade ovarian/prostate cancer with a pathology adjusted Manchester score of \u2265 15/CanRisk score of 10%", "Living affected individual ---- Prostate cancer AND a family history of breast/ovarian/pancreatic cancer with a pathology adjusted Manchester score of \u2265 15/CanRisk score of 10%", "Deceased affected individual ---- Breast or high grade ovarian cancer AND a stored DNA, blood or tissue sample available for DNA extraction AND Pathology-adjusted Manchester score \u2265 17 or CanRisk score \u2265 15% AND No living affected individual is available for genetic testing", "Living unaffected individual ---- First degree relative affected by breast or serous ovarian cancer AND Combined pathology-adjusted Manchester score \u2265 20 or BOADICEA/CanRisk score of \u2265 20% for affected relative or BOADICEA/CanRisk score of \u2265 10% for unaffected relative AND No living affected individual is available for genetic testing AND No deceased affected individual with tumour material available for testing"], "requesting_specialties": ["Oncology", "Clinical Genetics", "Surgery"], "test_code": "R208", "clinical_indication_name": "R208 - Inherited breast cancer and ovarian cancer"}];
+
+        // Function to populate the form fields
+        document.addEventListener('DOMContentLoaded', function () {
+            populateFormFields(data);
+        });
+
+    function populateFormFields(data) {
+        const testCodeSelect = document.getElementById('testCode');
+        const testCriteriaSelect = document.getElementById('testCriteria');
+        const requestingSpecialtySelect = document.getElementById('requestingSpecialty');
+
+        const testCodes = new Set();
+        const criteriaMap = {};
+        const specialtiesMap = {};
+
+        // Process JSON data
+        data.forEach(entry => {
+            const { clinical_indication_name, criteria, requesting_specialties } = entry;
+
+            // Populate Test Code options
+            if (!testCodes.has(clinical_indication_name)) {
+                const option = document.createElement('option');
+                option.value = clinical_indication_name;
+                option.textContent = clinical_indication_name;
+                testCodeSelect.appendChild(option);
+                testCodes.add(clinical_indication_name);
+            }
+
+            // Populate Criteria map
+            criteriaMap[clinical_indication_name] = criteria;
+
+            // Populate Specialties map
+            specialtiesMap[clinical_indication_name] = requesting_specialties;
+        });
+
+        // Handle Test Code selection change
+        testCodeSelect.addEventListener('change', function() {
+            const selectedCode = testCodeSelect.value;
+
+            // Update Criteria options
+            testCriteriaSelect.innerHTML = '<option value="">Select test criteria</option>';
+            if (criteriaMap[selectedCode]) {
+                criteriaMap[selectedCode].forEach(criteria => {
+                    const option = document.createElement('option');
+                    option.value = criteria;
+                    option.textContent = criteria;
+                    testCriteriaSelect.appendChild(option);
+                });
+            }
+
+            // Update Specialties options
+            requestingSpecialtySelect.innerHTML = '<option value="">Select a specialty</option>';
+            if (specialtiesMap[selectedCode]) {
+                specialtiesMap[selectedCode].forEach(specialty => {
+                    const option = document.createElement('option');
+                    option.value = specialty;
+                    option.textContent = specialty;
+                    requestingSpecialtySelect.appendChild(option);
+                });
+            }
+        });
+    }
+</script>
+
+</html>
+

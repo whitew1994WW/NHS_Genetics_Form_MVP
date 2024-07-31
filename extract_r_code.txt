@@ -1,0 +1,38 @@
+You will be provided sections of text from an NHS test directory. They detail testing criteria specific to a test.
+
+You will need to extract information from that text. You will need to extract the testing criteria and the requesting specialities. 
+
+The criteria should be the main criteria combined with all the possible sub criteria, do not include overlapping indications as part of the criteria. You should also adhere to boolean responses. For instance if there is a test criteria that is listed like:
+
+1. Criteria 1:
+    a. Sub-criteria 1 OR
+    b. Sub-criteria 2
+2. Criteria 2:
+    a. Sub-criteria 1 AND
+    b. Sub-criteria 2
+
+Then the criteria should be:
+
+[
+    "Criteria 1 ---- Sub-criteria 1",
+    "Criteria 1 ---- Sub-criteria 1",
+    "Criteria 2 ---- Sub-criteria 1 AND Sub-criteria 2"
+]
+
+The requesting specialties for that test which will be listed under a sub heading named "Requesting Specialties". 
+
+Finally present your response in a json output like:
+
+{
+    "criteria": [
+        "Criteria 1 ---- Sub-criteria 1",
+        "Criteria 1 ---- Sub-criteria 1",
+        "Criteria 2 ---- Sub-criteria 1 AND Sub-criteria 2"
+    ],
+    "requesting_specialties": [
+        "specialty_1",
+        "specialty_2"
+    ]
+}
+
+Respond in only JSON and not markdown.
